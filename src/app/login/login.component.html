@@ -1,0 +1,61 @@
+<div class="auth-container">
+  <!-- Version non connectée -->
+  <div *ngIf="!auth.isAuthenticated()" class="auth-card">
+    <div class="auth-header">
+      <div class="app-logo">
+        <svg viewBox="0 0 24 24" class="logo-icon">
+          <path d="M12 2L4 7v10l8 5 8-5V7l-8-5z" fill="#4f46e5"/>
+          <path d="M12 22l8-5V7l-8-5v20z" fill="#6366f1"/>
+        </svg>
+        <h1>Mon Application</h1>
+      </div>
+      <p class="auth-subtitle">Connectez-vous pour continuer</p>
+    </div>
+
+    <div class="auth-body">
+      <div *ngIf="errorMessage" class="auth-error">
+        <svg viewBox="0 0 24 24" class="error-icon">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+        </svg>
+        <span>{{ errorMessage }}</span>
+      </div>
+
+      <button (click)="login()" class="auth-button" [disabled]="isLoading">
+        <svg viewBox="0 0 24 24" class="provider-icon">
+          <path d="M11.5 2.5H2v19h9.5v-4.2H7.6v-2.6h3.9v-2.1H7.6V9.8h3.9V2.5zM22 2.5h-9.5v4.2h5.9v2.6h-5.9v2.1h5.9v2.6h-5.9v4.2H22V2.5z"/>
+        </svg>
+        <span>Continuer avec Microsoft</span>
+        <span *ngIf="isLoading" class="auth-spinner"></span>
+      </button>
+
+      <div class="auth-divider">
+        <span>ou</span>
+      </div>
+
+      <div class="auth-footer">
+        <p>En continuant, vous acceptez nos <a href="#">conditions d'utilisation</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Version connectée -->
+  <ng-template #loggedIn>
+    <div class="profile-card">
+      <div class="profile-content">
+        <div class="user-avatar">
+          {{ getInitials(auth.getCurrentUser()?.name) }}
+        </div>
+        <div class="user-info">
+          <h2>{{ auth.getCurrentUser()?.name }}</h2>
+       
+        </div>
+        <button (click)="logout()" class="logout-btn">
+          <svg viewBox="0 0 24 24" class="logout-icon">
+            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+          </svg>
+          Déconnexion
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>

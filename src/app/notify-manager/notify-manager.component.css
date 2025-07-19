@@ -1,0 +1,14 @@
+input {
+  margin-right: 10px;
+  padding: 5px;
+  width: 200px;
+}
+
+button {
+  padding: 6px 12px;
+}
+
+p {
+  margin-top: 10px;
+  font-weight: bold;
+}

@@ -1,0 +1,298 @@
+.cooptation-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+.btn-new {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.btn-new:hover {
+  background: #0056b3;
+}
+
+.filters {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex-grow: 1;
+  min-width: 220px;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 6px #007bff;
+  border-color: #007bff;
+}
+
+.status-select {
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  min-width: 160px;
+}
+
+.status-select:focus {
+  outline: none;
+  box-shadow: 0 0 6px #007bff;
+  border-color: #007bff;
+}
+
+.alert-error {
+  color: #dc3545;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.loading {
+  color: #007bff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+thead tr {
+  background: linear-gradient(45deg, #2c3e50, #34495e);
+  color: white;
+}
+
+thead th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.25s ease;
+}
+
+tbody tr:hover {
+  background-color: #f0f8ff;
+  cursor: pointer;
+}
+
+tbody td {
+  padding: 0.7rem 1rem;
+  vertical-align: middle;
+}
+
+.status-badge {
+  padding: 0.3rem 0.7rem;
+  border-radius: 12px;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  display: inline-block;
+  min-width: 75px;
+  text-align: center;
+}
+
+.status-submitted {
+  background-color: #007bff;
+}
+
+.status-review {
+  background-color: #17a2b8;
+}
+
+.status-valid {
+  background-color: #28a745;
+}
+
+.status-rejected {
+  background-color: #dc3545;
+}
+
+.actions button {
+  margin-right: 10px;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.actions button i {
+  font-size: 18px;
+}
+
+.btn-cv {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-cv:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0,123,255,0.4);
+}
+
+.btn-edit {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #1e7e34;
+  box-shadow: 0 4px 8px rgba(40,167,69,0.4);
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #a71d2a;
+  box-shadow: 0 4px 8px rgba(220,53,69,0.4);
+}
+
+.btn-details {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-details:hover {
+  background-color: #565e64;
+  box-shadow: 0 4px 8px rgba(108,117,125,0.4);
+}
+
+.consultant-email {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.no-data {
+  text-align: center;
+  font-size: 1rem;
+  color: #6c757d;
+  font-style: italic;
+  margin-top: 2rem;
+}
+
+.coopteur-coords {
+  margin-top: 2rem;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+
+.coopteur-coords h4 {
+  margin-bottom: 1rem;
+  color: #343a40;
+}
+
+.coord-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.coord-row label {
+  min-width: 150px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.coord-row input {
+  flex-grow: 1;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #e9ecef;
+  color: #495057;
+}
+.snackbar-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.snackbar-error {
+  background-color: #dc3545;
+  color: white;
+}
+
+button {
+  background-color: #1976d2;       /* Bleu mat */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #1565c0;       /* Bleu un peu plus foncé */
+  transform: translateY(-2px);
+}
+
+button:active {
+  background-color: #0d47a1;       /* Encore plus foncé lors du clic */
+  transform: scale(0.98);
+}
+

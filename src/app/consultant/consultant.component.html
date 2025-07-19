@@ -1,0 +1,27 @@
+<div>
+  <h2>Rechercher un consultant</h2>
+
+  <form [formGroup]="consultantForm" (ngSubmit)="fetchConsultant()">
+    <label for="email">Email consultant :</label>
+    <input id="email" type="email" formControlName="email" />
+
+    <button type="submit">Chercher</button>
+  </form>
+
+  <div *ngIf="error" style="color: red; margin-top: 10px;">{{ error }}</div>
+  <div *ngIf="message" style="color: green; margin-top: 10px;">{{ message }}</div>
+
+  <div *ngIf="consultant">
+    <h3>Détails du consultant :</h3>
+    <p><strong>Nom:</strong> {{ consultant.nom }}</p>
+    <p><strong>Prénom:</strong> {{ consultant.prenom }}</p>
+    <p><strong>Email:</strong> {{ consultant.email }}</p>
+
+    <form [formGroup]="consultantForm" (ngSubmit)="updateManagerEmail()">
+      <label for="managerEmail">Email manager :</label>
+      <input id="managerEmail" type="email" formControlName="managerEmail" />
+
+      <button type="submit">Mettre à jour l'email du manager</button>
+    </form>
+  </div>
+</div>

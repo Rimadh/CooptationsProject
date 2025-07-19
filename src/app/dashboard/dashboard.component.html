@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>📊 Statistiques des Cooptations</h2>
+
+  <div class="cards">
+    <mat-card>Total : {{ total }}</mat-card>
+    <mat-card>Soumis : {{ soumis }}</mat-card>
+    <mat-card>En revue : {{ enRevue }}</mat-card>
+    <mat-card>Validés : {{ valide }}</mat-card>
+    <mat-card>Rejetés : {{ rejete }}</mat-card>
+  </div>
+
+  <div class="chart">
+    <canvas baseChart 
+      [data]="pieChartData"
+      [type]="pieChartType">
+    </canvas>
+  </div>
+</div>

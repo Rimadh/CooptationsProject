@@ -1,0 +1,5 @@
+<div>
+  <input [(ngModel)]="cooptationId" placeholder="ID de la cooptation" />
+  <button (click)="sendNotification()">Notifier le manager</button>
+  <p *ngIf="message">{{ message }}</p>
+</div>

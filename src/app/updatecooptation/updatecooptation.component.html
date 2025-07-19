@@ -1,0 +1,30 @@
+<div *ngIf="isLoading">Chargement...</div>
+
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+  <label>Genre</label>
+  <input formControlName="genre" type="text" />
+
+  <label>Prénom</label>
+  <input formControlName="prenom" type="text" />
+
+  <label>Nom</label>
+  <input formControlName="nom" type="text" />
+
+  <label>Email</label>
+  <input formControlName="email" type="email" />
+
+  <label>Téléphone</label>
+  <input formControlName="telephone" type="text" />
+
+  <label>Ville de résidence</label>
+  <input formControlName="villeResidence" type="text" />
+
+  <label>Commentaire</label>
+  <textarea formControlName="commentaire"></textarea>
+
+  <label>CV (optionnel)</label>
+  <input type="file" (change)="onFileSelected($event)" />
+
+  <button type="submit" [disabled]="updateForm.invalid">Mettre à jour</button>
+  <button type="button" (click)="onCancel()">Annuler</button>
+</form>

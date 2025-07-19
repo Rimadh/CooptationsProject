@@ -1,0 +1,86 @@
+<div class="modal">
+  <h3>Cooptation : Candidature spontanée</h3>
+
+  <div class="section">
+    <h4>Coordonnées du coopteur</h4>
+    <div>
+      <label>Votre prénom</label>
+      <input type="text" [value]="currentUserFirstName" readonly />
+    </div>
+    <div>
+      <label>Votre email professionnel</label>
+      <input type="email" [value]="currentUserEmail" readonly />
+    </div>
+  </div>
+
+  <div class="section">
+    <h4>Coordonnées du coopté</h4>
+
+    <form [formGroup]="cooptationForm" (ngSubmit)="submitForm()" enctype="multipart/form-data">
+      <div>
+        <label>Genre</label>
+        <select formControlName="genre">
+          <option value="">Genre</option>
+          <option value="M">Masculin</option>
+          <option value="F">Féminin</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Prénom</label>
+        <input type="text" formControlName="prenom" />
+      </div>
+
+      <div>
+        <label>Nom</label>
+        <input type="text" formControlName="nom" />
+      </div>
+
+      <div>
+        <label>Date de naissance</label>
+        <input type="date" formControlName="dateNaissance" />
+      </div>
+
+      <div>
+        <label>Téléphone</label>
+        <input type="text" formControlName="telephone" />
+      </div>
+
+      <div>
+        <label>Email</label>
+        <input type="email" formControlName="email" />
+      </div>
+
+      <div>
+        <label>Ville de résidence</label>
+        <input type="text" formControlName="villeResidence" />
+      </div>
+
+      <div>
+        <label>Commentaire</label>
+        <textarea formControlName="commentaire"></textarea>
+      </div>
+
+      <div>
+        <label>CV (optionnel)</label>
+        <input type="file" accept=".pdf" (change)="onFileSelected($event)" />
+      </div>
+
+      <div>
+        <label>
+          <input type="checkbox" formControlName="cguAcceptees" />
+          En cochant cette case, j’accepte les
+          <a href="#">CGU</a> et la
+          <a href="#">politique de protection des données</a>.
+        </label>
+      </div>
+
+      <button type="submit" [disabled]="cooptationForm.invalid">Valider et continuer</button>
+
+      <div *ngIf="successMessage" style="color: green;">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+    </form>
+  </div>
+
+  
+</div>

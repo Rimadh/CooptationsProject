@@ -1,0 +1,14 @@
+<nav>
+  <div class="navbar-container">
+    <a routerLink="/li">Accueil</a>
+    
+    <div class="user-section" *ngIf="authService.currentUser$ | async as user">
+      <span>Bonjour, {{ user.name }}</span>
+      <button (click)="logout()">Déconnexion</button>
+    </div>
+
+    <div *ngIf="!(authService.currentUser$ | async)">
+      <button (click)="authService.login()">Connexion</button>
+    </div>
+  </div>
+</nav>

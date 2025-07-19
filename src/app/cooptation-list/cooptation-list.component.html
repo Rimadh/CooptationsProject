@@ -1,0 +1,130 @@
+<div class="cooptation-container">
+<a mat-button routerLink="/dashboard">📊 Dashboard</a>
+
+
+  <div class="header">
+    <h1><i class="fas fa-users"></i> Gestion des Cooptations</h1>
+    <button class="btn-new" (click)="addCooptation()" title="Nouvelle Cooptation">
+      <i class="fas fa-plus"></i> Nouvelle Cooptation
+    </button>
+  </div>
+
+  <div class="filters">
+    <input 
+      type="text" 
+      placeholder="Rechercher par nom, prénom ou email..." 
+      [(ngModel)]="searchTerm" 
+      (input)="applyFilters()" 
+      class="search-input"
+    />
+
+    <select [(ngModel)]="statusFilter" (change)="applyFilters()" class="status-select" aria-label="Filtrer par statut">
+      <option value="ALL">Tous les statuts</option>
+      <option value="SOUMIS">Soumis</option>
+      <option value="EN_REVUE">En revue</option>
+      <option value="VALIDE">Validé</option>
+      <option value="REJETE">Rejeté</option>
+    </select>
+  </div>
+
+  <div *ngIf="errorMsg" class="alert-error">{{ errorMsg }}</div>
+  <div *ngIf="isLoading" class="loading">Chargement...</div>
+
+  <div class="table-container" *ngIf="filteredCooptations.length > 0; else noData">
+    <table>
+      <thead>
+        <tr>
+          <th>Candidat</th>
+          <th>Coordonnées Coopteur</th>
+          <th>Commentaire</th>
+          <th>Statut</th>
+          <th>Date de Soumission</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of filteredCooptations">
+          <td>
+            <strong>{{ c.candidatPrenom }} {{ c.candidatNom }}</strong><br/>
+            <small>{{ c.candidatEmail }}</small>
+          </td>
+          <td>
+            <div><strong>{{c.consultantNom}} </strong></div>
+          </td>
+           <td>
+           
+            <div class="commentaire">{{ c.commentaire }}</div>
+          </td>
+          <td>
+            <span class="status-badge" [ngClass]="getStatusClass(c.statut)">
+              {{ c.statut }}
+            </span>
+          </td>
+          <td>{{ c.dateSoumission | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td class="actions">
+
+            <button 
+              class="btn btn-cv" 
+              (click)="downloadCv(c)" 
+              [disabled]="!c.cvFileName"
+              title="Télécharger le CV">
+              <i class="fas fa-file-pdf"></i> Télécharger CV
+            </button>
+
+            <button 
+              class="btn btn-edit" 
+              *ngIf="canEdit(c)" 
+              (click)="editCooptation(c)" 
+              title="Modifier">
+              <i class="fas fa-edit"></i> Modifier
+            </button>
+
+            <button 
+              class="btn btn-delete" 
+              *ngIf="canDelete(c)" 
+              (click)="deleteCooptation(c)" 
+              title="Supprimer">
+              <i class="fas fa-trash-alt"></i> Supprimer
+            </button>
+
+            <button 
+              class="btn btn-details" 
+              (click)="showDetails(c)" 
+              title="Détails">
+              <i class="fas fa-info-circle"></i> Détails
+            </button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<div *ngFor="let cooptation of cooptations">
+  <!-- Affichage info candidat -->
+  <p>{{cooptation.candidatNom}} {{cooptation.candidatPrenom}}</p>
+
+  <button mat-button color="primary" (click)="onNotifyManager(cooptation)">
+    Notifier Manager
+  </button>
+</div>
+
+  <ng-template #noData>
+    <p class="no-data">Aucune cooptation trouvée.</p>
+  </ng-template>
+
+  <div class="section coopteur-coords">
+    <h4>Coordonnées du coopteur connecté</h4>
+    <div class="coord-row">
+      <label>Nom complet :</label>
+      <input type="text" [value]="currentUserFirstName + ' ' + currentUserLastName" readonly />
+    </div>
+    <div class="coord-row">
+      <label>Email professionnel :</label>
+      <input type="email" [value]="currentUserEmail" readonly />
+    </div>
+
+    <a routerLink="/consultant-manager">🔗 Gérer le manager d’un consultant</a>
+
+  </div>
+
+</div>
